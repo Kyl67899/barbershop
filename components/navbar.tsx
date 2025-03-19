@@ -49,7 +49,7 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "bg-white text-black py-3 shadow-lg" : "bg-white text-black py-5",
+        isScrolled ? "bg-black text-white py-3 shadow-lg" : "bg-black text-white py-5",
       )}
     >
       <div className="container mx-auto px-4">
@@ -67,8 +67,8 @@ export default function Navbar() {
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
-                      "flex items-center hover:text-primary focus:outline-none transition-colors",
-                      pathname.startsWith(link.href) ? "text-primary" : "",
+                      "flex items-center hover:text-gray-500 focus:outline-none transition-colors",
+                      pathname.startsWith(link.href) ? "text-white" : "",
                     )}
                   >
                     {link.name}
@@ -90,7 +90,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={cn("hover:text-primary transition-colors", pathname === link.href ? "text-primary" : "")}
+                  className={cn("hover:text-gray-500 transition-colors", pathname === link.href ? "text-white" : "")}
                 >
                   {link.name}
                 </Link>
@@ -125,8 +125,8 @@ export default function Navbar() {
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
-                      "flex items-center hover:text-primary focus:outline-none transition-colors w-full",
-                      pathname.startsWith(link.href) ? "text-primary" : "",
+                      "flex items-center hover:text-gray-500 focus:outline-none transition-colors w-full",
+                      pathname.startsWith(link.href) ? "text-white" : "",
                     )}
                   >
                     {link.name}
@@ -141,8 +141,8 @@ export default function Navbar() {
                           key={service.name}
                           href={service.href}
                           className={cn(
-                            "block hover:text-primary transition-colors",
-                            pathname === service.href ? "text-primary" : "",
+                            "block hover:text-gray-500 transition-colors",
+                            pathname === service.href ? "text-white" : "",
                           )}
                         >
                           {service.name}
@@ -156,8 +156,8 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   className={cn(
-                    "block hover:text-primary transition-colors",
-                    pathname === link.href ? "text-primary" : "",
+                    "block text-black hover:text-black transition-colors",
+                    pathname === link.href ? "text-black" : "",
                   )}
                 >
                   {link.name}
@@ -166,7 +166,7 @@ export default function Navbar() {
             )}
             <Link
               href="/booking"
-              className="block bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-md transition-colors text-center"
+              className="block bg-white hover:bg-primary/90 text-white px-5 py-2 rounded-md transition-colors text-center"
             >
               Book Now
             </Link>
