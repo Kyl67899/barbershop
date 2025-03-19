@@ -1,0 +1,118 @@
+import type { Metadata } from "next"
+import Image from "next/image"
+import { CheckCircle } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Kids Haircut | Elite Cuts Barbershop",
+  description: "Gentle, fun haircuts for children at Elite Cuts Barbershop.",
+}
+
+export default function KidsHaircutPage() {
+  return (
+    <div>
+      <div className="relative h-[40vh] md:h-[50vh] overflow-hidden rounded-xl mb-12">
+        <Image src="/images/kids-haircut-service.jpg" alt="Kids Haircut" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Kids Haircut</h1>
+            <p className="text-xl max-w-2xl">Gentle, fun haircuts in a kid-friendly environment</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="lg:col-span-2">
+          <h2 className="text-3xl font-bold mb-6">Service Details</h2>
+          <p className="text-lg text-muted-foreground mb-6">
+            Our kids haircut service is designed to make haircuts a fun and stress-free experience for children of all
+            ages. Our patient barbers are specially trained to work with children, creating a comfortable environment
+            where kids can enjoy getting a great haircut.
+          </p>
+
+          <p className="text-lg text-muted-foreground mb-6">
+            The service begins with a consultation with both the parent and child to understand the desired style. Our
+            barbers use gentle techniques and engage with children to keep them comfortable and entertained throughout
+            the haircut. We take extra care to ensure a positive experience that will make future visits something to
+            look forward to.
+          </p>
+
+          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <ul className="space-y-3 mb-8">
+            {[
+              "Consultation with parent and child",
+              "Kid-friendly approach and environment",
+              "Precision haircut",
+              "Styling appropriate for age",
+              "Complimentary treat after the haircut",
+              "First haircut certificate (for first-time clients)",
+            ].map((item, index) => (
+              <li key={index} className="flex items-start">
+                <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-xl font-bold mb-4">Why Choose Our Kids Haircut Service</h3>
+          <p className="text-lg text-muted-foreground mb-6">
+            At Elite Cuts, we understand that a child's first experiences with haircuts can shape their attitudes for
+            years to come. Our barbers are not only skilled in cutting children's hair but also in creating a positive,
+            fun atmosphere that helps children feel comfortable and confident. We take pride in our ability to work with
+            children of all ages and temperaments, ensuring a great haircut and a great experience.
+          </p>
+
+          <h3 className="text-xl font-bold mb-4">Tips for Parents</h3>
+          <ul className="space-y-3 mb-8">
+            {[
+              "Bring your child when they're well-rested and fed",
+              "Consider scheduling during quieter times of the day",
+              "Bring a favorite toy or book for comfort",
+              "Talk positively about the haircut experience beforehand",
+              "Bring a change of clothes for comfort after the haircut",
+            ].map((item, index) => (
+              <li key={index} className="flex items-start">
+                <CheckCircle className="h-5 w-5 text-primary mr-2 mt-0.5 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <div className="bg-muted p-6 rounded-xl sticky top-24">
+            <h3 className="text-xl font-bold mb-4">Service Information</h3>
+
+            <div className="space-y-4 mb-6">
+              <div>
+                <p className="text-sm text-muted-foreground">Price</p>
+                <p className="text-2xl font-bold">$20</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-muted-foreground">Duration</p>
+                <p className="font-medium">20-30 minutes</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-muted-foreground">Recommended For</p>
+                <p className="font-medium">Children ages 2-12</p>
+              </div>
+            </div>
+
+            <div className="border-t border-border pt-4 mb-4">
+              <h4 className="font-medium mb-2">Popular Kids Styles</h4>
+              <div className="flex flex-wrap gap-2">
+                {["Classic Cut", "Fade", "Textured Top", "Bowl Cut", "Mohawk"].map((style, index) => (
+                  <span key={index} className="bg-background px-3 py-1 rounded-full text-sm">
+                    {style}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
