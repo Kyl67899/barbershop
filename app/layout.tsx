@@ -5,7 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
-import EliteChatbot from "@/components/elite-chatbot"
+// import EliteChatbot from "@/components/elite-chatbot"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,7 +26,7 @@ export default function RootLayout({
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />
         <Toaster />
-        <EliteChatbot />
+        {/* <EliteChatbot /> */}
       </body>
     </html>
   )
