@@ -11,4 +11,3 @@ const ServiceInquiryForm = dynamic(() => import("./service-inquiry-form"), {
 export default function ServiceInquiryFormWrapper({ serviceName }: { serviceName: string }) {
   return <ServiceInquiryForm serviceName={serviceName} />
 }
-
