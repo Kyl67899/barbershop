@@ -1,12 +1,6 @@
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import { Suspense } from "react"
-
-// Import the booking component with no SSR
-const BookingForm = dynamic(() => import("../../components/book-form"), {
-  ssr: false,
-  loading: () => <BookingFallback />,
-})
+import BookingWrapper from "@/components/booking-wrapper"
 
 export const metadata: Metadata = {
   title: "Book Appointment | Elite Cuts Barbershop",
@@ -24,7 +18,7 @@ export default function BookingPage() {
       </div>
 
       <Suspense fallback={<BookingFallback />}>
-        <BookingForm />
+        <BookingWrapper />
       </Suspense>
     </div>
   )
