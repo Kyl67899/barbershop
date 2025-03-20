@@ -36,7 +36,7 @@ export default function KidsHaircutPage() {
             look forward to.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Consultation with parent and child",
@@ -55,10 +55,10 @@ export default function KidsHaircutPage() {
 
           <h3 className="text-xl font-bold mb-4">Why Choose Our Kids Haircut Service</h3>
           <p className="text-lg text-muted-foreground mb-6">
-            At Elite Cuts, we understand that a child's first experiences with haircuts can shape their attitudes for
-            years to come. Our barbers are not only skilled in cutting children's hair but also in creating a positive,
-            fun atmosphere that helps children feel comfortable and confident. We take pride in our ability to work with
-            children of all ages and temperaments, ensuring a great haircut and a great experience.
+            At Elite Cuts, we understand that a child&apos;s first experiences with haircuts can shape their attitudes
+            for years to come. Our barbers are not only skilled in cutting children&apos;s hair but also in creating a
+            positive, fun atmosphere that helps children feel comfortable and confident. We take pride in our ability to
+            work with children of all ages and temperaments, ensuring a great haircut and a great experience.
           </p>
 
           <h3 className="text-xl font-bold mb-4">Tips for Parents</h3>

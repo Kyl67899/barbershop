@@ -76,17 +76,20 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Values</h2>
               <div className="w-24 h-1 bg-primary mb-8"></div>
               <p className="text-lg text-muted-foreground mb-8">
-                At Elite Cuts, we believe in providing more than just a haircut. We're committed to creating an
+                At Elite Cuts, we believe in providing more than just a haircut. We&apos;re committed to creating an
                 experience that leaves you looking and feeling your best. Our core values guide everything we do.
               </p>
 
               <div className="space-y-4">
                 {[
                   { title: "Excellence", desc: "We strive for perfection in every cut and service we provide." },
-                  { title: "Integrity", desc: "We're honest, transparent, and committed to doing what's right." },
+                  {
+                    title: "Integrity",
+                    desc: "We&apos;re honest, transparent, and committed to doing what&apos;s right.",
+                  },
                   {
                     title: "Community",
-                    desc: "We're proud to be part of our local community and give back whenever possible.",
+                    desc: "We&apos;re proud to be part of our local community and give back whenever possible.",
                   },
                   { title: "Innovation", desc: "We continuously learn and adopt new techniques and styles." },
                 ].map((value, index) => (

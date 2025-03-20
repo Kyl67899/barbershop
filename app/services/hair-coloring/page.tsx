@@ -25,18 +25,18 @@ export default function HairColoringPage() {
           <h2 className="text-3xl font-bold mb-6">Service Details</h2>
           <p className="text-lg text-muted-foreground mb-6">
             Our hair coloring service offers a range of options to enhance your natural color, cover gray hair, or
-            create a bold new look. Whether you're looking for a subtle change or a complete transformation, our color
-            specialists will work with you to achieve the perfect shade that complements your skin tone and style.
+            create a bold new look. Whether you&apos;re looking for a subtle change or a complete transformation, our
+            color specialists will work with you to achieve the perfect shade that complements your skin tone and style.
           </p>
 
           <p className="text-lg text-muted-foreground mb-6">
-            The service begins with a thorough consultation to understand your color goals and assess your hair's
+            The service begins with a thorough consultation to understand your color goals and assess your hair&apos;s
             current condition. Your colorist will then mix a custom color formula tailored to your specific needs and
             apply it using techniques that ensure even, natural-looking results. After processing, your hair will be
             washed, conditioned, and styled to showcase your new color.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Color consultation",

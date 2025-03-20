@@ -36,7 +36,7 @@ export default function HotTowelShavePage() {
             towels to close pores and the application of aftershave balm to soothe and protect your skin.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Multiple hot towel applications",
@@ -56,10 +56,10 @@ export default function HotTowelShavePage() {
 
           <h3 className="text-xl font-bold mb-4">Why Choose Our Hot Towel Shave</h3>
           <p className="text-lg text-muted-foreground mb-6">
-            At Elite Cuts, our hot towel shave is more than just a service—it's an experience. This traditional
+            At Elite Cuts, our hot towel shave is more than just a service—it&apos;s an experience. This traditional
             barbering ritual provides not only the closest shave possible but also a moment of relaxation and self-care.
             Our barbers are specially trained in straight razor techniques, ensuring a safe, comfortable, and luxurious
-            experience that modern razors simply can't match.
+            experience that modern razors simply can&apos;t match.
           </p>
         </div>
 

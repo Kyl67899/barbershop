@@ -32,11 +32,11 @@ export default function HaircutPage() {
 
           <p className="text-lg text-muted-foreground mb-6">
             Each haircut begins with a consultation to discuss your style goals, followed by a relaxing shampoo and
-            scalp massage. Your barber will then use precision cutting techniques to create a look that's uniquely
+            scalp massage. Your barber will then use precision cutting techniques to create a look that&apos;s uniquely
             yours. The service concludes with styling using premium products to ensure your new cut looks its best.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Personal style consultation",
@@ -56,7 +56,7 @@ export default function HaircutPage() {
           <h3 className="text-xl font-bold mb-4">Why Choose Our Haircut Service</h3>
           <p className="text-lg text-muted-foreground mb-6">
             At Elite Cuts, we pride ourselves on delivering haircuts that not only meet but exceed your expectations.
-            Our barbers are trained in the latest techniques and styles, ensuring you receive a cut that's both
+            Our barbers are trained in the latest techniques and styles, ensuring you receive a cut that&apos;s both
             contemporary and tailored to your individual needs. We use only the finest tools and products to ensure a
             superior experience and result.
           </p>

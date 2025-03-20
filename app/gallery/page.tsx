@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Gallery from "@/components/gallery"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -40,9 +41,11 @@ export default function GalleryPage() {
                 {[1, 2, 3, 4, 5, 6].map((index) => (
                   <div key={index} className="overflow-hidden rounded-lg group">
                     <div className="relative aspect-square">
-                      <img
+                      <Image
                         src={`/placeholder.svg?height=600&width=600&text=Haircut+${index}`}
                         alt={`Haircut style ${index}`}
+                        width={600}
+                        height={600}
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
@@ -56,9 +59,11 @@ export default function GalleryPage() {
                 {[1, 2, 3, 4].map((index) => (
                   <div key={index} className="overflow-hidden rounded-lg group">
                     <div className="relative aspect-square">
-                      <img
+                      <Image
                         src={`/placeholder.svg?height=600&width=600&text=Beard+${index}`}
                         alt={`Beard style ${index}`}
+                        width={600}
+                        height={600}
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
@@ -72,9 +77,11 @@ export default function GalleryPage() {
                 {[1, 2, 3, 4, 5].map((index) => (
                   <div key={index} className="overflow-hidden rounded-lg group">
                     <div className="relative aspect-square">
-                      <img
+                      <Image
                         src={`/placeholder.svg?height=600&width=600&text=Style+${index}`}
                         alt={`Hair style ${index}`}
+                        width={600}
+                        height={600}
                         className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>

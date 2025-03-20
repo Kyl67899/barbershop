@@ -26,8 +26,8 @@ export default function BeardTrimPage() {
           <h2 className="text-3xl font-bold mb-6">Service Details</h2>
           <p className="text-lg text-muted-foreground mb-6">
             Our beard trim service is designed to help you maintain a well-groomed and stylish beard that enhances your
-            facial features. Whether you're looking for a slight trim or a complete reshape, our expert barbers will
-            work with you to achieve the perfect look.
+            facial features. Whether you&apos;re looking for a slight trim or a complete reshape, our expert barbers
+            will work with you to achieve the perfect look.
           </p>
 
           <p className="text-lg text-muted-foreground mb-6">
@@ -37,7 +37,7 @@ export default function BeardTrimPage() {
             style your beard.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Beard style consultation",

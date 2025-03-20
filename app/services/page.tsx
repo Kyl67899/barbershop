@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Scissors, BeakerIcon as Beard, SprayCanIcon as Spray, Droplet, Palette, BabyIcon as Child } from "lucide-react"
@@ -132,10 +133,11 @@ export default function ServicesPage() {
               </Button>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="/placeholder.svg?height=800&width=800&text=Premium+Products"
                 alt="Premium barbershop products"
-                className="object-cover w-full h-full"
+                fill
+                className="object-cover"
               />
             </div>
           </div>

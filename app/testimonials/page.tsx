@@ -1,6 +1,7 @@
 import { getTestimonials } from "@/lib/reviews"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
+import Image from "next/image"
 
 export default async function TestimonialsPage() {
   const testimonials = await getTestimonials()
@@ -20,11 +21,13 @@ export default async function TestimonialsPage() {
             <Card key={testimonial.id} className="overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <img
-                      src={testimonial.avatar_url || "/placeholder.svg"}
+                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4 relative">
+                    <Image
+                      src={testimonial.image || "/placeholder.svg?height=48&width=48"}
                       alt={testimonial.name}
-                      className="w-full h-full object-cover"
+                      width={48}
+                      height={48}
+                      className="object-cover"
                     />
                   </div>
                   <div>
@@ -42,7 +45,7 @@ export default async function TestimonialsPage() {
                   </div>
                 </div>
                 <p className="text-gray-600">{testimonial.content}</p>
-                <p className="text-xs text-gray-400 mt-4">{new Date(testimonial.created_at).toLocaleDateString()}</p>
+                <p className="text-xs text-gray-400 mt-4">{new Date(testimonial.date).toLocaleDateString()}</p>
               </CardContent>
             </Card>
           ))}

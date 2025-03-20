@@ -58,7 +58,7 @@ export default function Contact() {
       setSubject("")
       setMessage("")
       e.currentTarget.reset()
-    } catch (error) {
+    } catch {
       toast({
         title: "Something went wrong",
         description: "Please try again later",

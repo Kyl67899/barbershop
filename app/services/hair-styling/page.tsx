@@ -32,11 +32,11 @@ export default function HairStylingPage() {
           <p className="text-lg text-muted-foreground mb-6">
             The service begins with a consultation to understand your styling goals and preferences. Your stylist will
             then wash and condition your hair before applying the appropriate styling products and using professional
-            techniques to achieve your desired look. Whether you're looking for a sleek, professional style or something
-            more textured and casual, we'll help you look your best.
+            techniques to achieve your desired look. Whether you&apos;re looking for a sleek, professional style or
+            something more textured and casual, we&apos;ll help you look your best.
           </p>
 
-          <h3 className="text-xl font-bold mb-4 mt-8">What's Included</h3>
+          <h3 className="text-xl font-bold mb-4 mt-8">What&apos;s Included</h3>
           <ul className="space-y-3 mb-8">
             {[
               "Style consultation",
@@ -57,8 +57,8 @@ export default function HairStylingPage() {
           <p className="text-lg text-muted-foreground mb-6">
             At Elite Cuts, we understand that the right styling can transform your look and boost your confidence. Our
             stylists are trained in the latest techniques and use only premium products to ensure your hair not only
-            looks great but stays healthy. Whether you're preparing for a special event or just want to refresh your
-            everyday look, our styling service will leave you looking and feeling your best.
+            looks great but stays healthy. Whether you&apos;re preparing for a special event or just want to refresh
+            your everyday look, our styling service will leave you looking and feeling your best.
           </p>
         </div>
 

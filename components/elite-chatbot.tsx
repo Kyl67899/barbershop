@@ -72,7 +72,7 @@ export default function EliteChatbot() {
 
   // Function to handle form completion and redirect
   const completeBookingForm = () => {
-    const { isComplete, missingFields } = validateBookingData(bookingData)
+    const { isComplete } = validateBookingData(bookingData)
 
     if (isComplete) {
       // Construct URL for booking form with all parameters
@@ -100,7 +100,7 @@ export default function EliteChatbot() {
 
   // Function to handle JotForm completion and redirect
   const completeJotForm = async () => {
-    const { isComplete, missingFields } = validateJotFormData(jotFormData)
+    const { isComplete } = validateJotFormData(jotFormData)
 
     if (isComplete) {
       try {
@@ -197,33 +197,28 @@ export default function EliteChatbot() {
           }
         }, 1500)
       }
-    } else {
-      // If we don't have complete information, try to collect it or redirect
-      if (missingFields.length > 2) {
-        // If too many fields are missing, just redirect to appropriate page
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: `It seems we're missing several pieces of information. Let me take you to our form page where you can fill out the details directly.`,
-          },
-        ])
+    } else if (Object.keys(jotFormData).length > 2) {
+      // If we have some data but not all required fields, just redirect to appropriate page
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: `It seems we're missing several pieces of information. Let me take you to our form page where you can fill out the details directly.`,
+        },
+      ])
 
-        // Redirect based on form type
-        setTimeout(() => {
-          if (jotFormData.type === "contact") {
-            const contactUrl = `/contact?${jotFormData.name ? `name=${encodeURIComponent(jotFormData.name)}` : ""}${jotFormData.email ? `&email=${encodeURIComponent(jotFormData.email)}` : ""}${jotFormData.message ? `&message=${encodeURIComponent(jotFormData.message)}` : ""}`
-            router.push(contactUrl)
-          } else {
-            const bookingUrl = `/booking?${jotFormData.name ? `name=${encodeURIComponent(jotFormData.name)}` : ""}${jotFormData.email ? `&email=${encodeURIComponent(jotFormData.email)}` : ""}${jotFormData.phone ? `&phone=${encodeURIComponent(jotFormData.phone)}` : ""}${jotFormData.service ? `&service=${encodeURIComponent(jotFormData.service)}` : ""}${jotFormData.message ? `&notes=${encodeURIComponent(jotFormData.message)}` : ""}`
-            router.push(bookingUrl)
-          }
-        }, 1500)
+      // Redirect based on form type
+      setTimeout(() => {
+        if (jotFormData.type === "contact") {
+          const contactUrl = `/contact?${jotFormData.name ? `name=${encodeURIComponent(jotFormData.name)}` : ""}${jotFormData.email ? `&email=${encodeURIComponent(jotFormData.email)}` : ""}${jotFormData.message ? `&message=${encodeURIComponent(jotFormData.message)}` : ""}`
+          router.push(contactUrl)
+        } else {
+          const bookingUrl = `/booking?${jotFormData.name ? `name=${encodeURIComponent(jotFormData.name)}` : ""}${jotFormData.email ? `&email=${encodeURIComponent(jotFormData.email)}` : ""}${jotFormData.phone ? `&phone=${encodeURIComponent(jotFormData.phone)}` : ""}${jotFormData.service ? `&service=${encodeURIComponent(jotFormData.service)}` : ""}${jotFormData.message ? `&notes=${encodeURIComponent(jotFormData.message)}` : ""}`
+          router.push(bookingUrl)
+        }
+      }, 1500)
 
-        return true
-      }
-
-      return false
+      return true
     }
 
     return false

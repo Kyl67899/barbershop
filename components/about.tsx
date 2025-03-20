@@ -31,8 +31,8 @@ export default function About() {
               of expert barbers combines traditional techniques with modern styles to deliver exceptional results.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
-              We believe that a great haircut is more than just a service—it's an experience. That's why we've created a
-              space where you can relax, unwind, and leave looking and feeling your best.
+              We believe that a great haircut is more than just a service—it&apos;s an experience. That&apos;s why
+              we&apos;ve created a space where you can relax, unwind, and leave looking and feeling your best.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

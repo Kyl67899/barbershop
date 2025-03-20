@@ -588,11 +588,12 @@ export async function generateChatResponse(
       })
 
       return text
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error generating AI response:", error)
 
       // Check for quota exceeded error
       if (
+        error instanceof Error &&
         error.message &&
         (error.message.includes("quota") ||
           error.message.includes("billing") ||
@@ -673,11 +674,12 @@ export async function extractJotFormInfo(
         }
         return currentData || {}
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error extracting JotForm info with AI:", error)
 
       // Check for quota exceeded error
       if (
+        error instanceof Error &&
         error.message &&
         (error.message.includes("quota") ||
           error.message.includes("billing") ||
@@ -763,11 +765,12 @@ export async function extractBookingInfo(
         }
         return currentData || {}
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error extracting booking info with AI:", error)
 
       // Check for quota exceeded error
       if (
+        error instanceof Error &&
         error.message &&
         (error.message.includes("quota") ||
           error.message.includes("billing") ||
