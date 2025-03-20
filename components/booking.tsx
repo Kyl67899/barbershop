@@ -140,7 +140,7 @@ export default function Booking() {
               ref={iframeRef}
               id="JotFormIFrame-250767357882168"
               title="Appointment Request Form"
-              allowtransparency={true}
+              allowTransparency={true}
               allow="geolocation; microphone; camera; fullscreen"
               src={jotformUrl}
               frameBorder="0"
