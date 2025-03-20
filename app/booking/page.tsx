@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import BookingWrapper from "@/components/booking-wrapper"
+import BookingWrapper from "../../components/book-wrapper"
 
 export const metadata: Metadata = {
   title: "Book Appointment | Elite Cuts Barbershop",

@@ -1,11 +1,14 @@
-import { Suspense } from "react"
-import BookingWrapper from "../components/book-wrapper"
+"use client"
+
+import dynamic from "next/dynamic"
+
+// Import the booking form with no SSR
+const BookingForm = dynamic(() => import("../components/book-form"), {
+  ssr: false,
+  loading: () => <p className="text-center py-4">Loading booking form...</p>,
+})
 
 export default function Booking() {
-  return (
-    <Suspense fallback={<div className="py-20 text-center">Loading booking form...</div>}>
-      <BookingWrapper />
-    </Suspense>
-  )
+  return <BookingForm />
 }
 
