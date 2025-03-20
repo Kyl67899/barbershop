@@ -6,7 +6,7 @@ import Gallery from "@/components/gallery"
 import Testimonials from "@/components/testimonials"
 import Booking from "@/components/booking"
 import Contact from "@/components/contact"
-import { Analytics } from "@vercel/analytics/react"
+
 
 export const metadata: Metadata = {
   title: "Elite Cuts | Premium Barbershop",
