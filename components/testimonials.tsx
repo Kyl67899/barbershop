@@ -9,10 +9,10 @@ import { getFeaturedTestimonials } from "@/lib/reviews"
 type Testimonial = {
   id: string
   name: string
-  avatar_url: string
+  avatar_url?: string
   rating: number
   content: string
-  status: string
+  status?: string
   created_at: string
 }
 
@@ -24,7 +24,17 @@ export default function Testimonials() {
     async function loadTestimonials() {
       try {
         const data = await getFeaturedTestimonials()
-        setTestimonials(data)
+        // Transform the data to match the Testimonial type
+        const formattedData = data.map((item) => ({
+          id: item.id,
+          name: item.name,
+          avatar_url: item.image,
+          rating: item.rating,
+          content: item.content,
+          status: "approved",
+          created_at: item.date,
+        }))
+        setTestimonials(formattedData)
       } catch (error) {
         console.error("Failed to load testimonials:", error)
       } finally {
