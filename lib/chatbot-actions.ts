@@ -22,8 +22,8 @@ export async function prepareJotFormData(data: {
 }
 
 // Function to save chatbot state in a cookie
-export async function saveChatbotState(state: any) {
-  cookies().set({
+export async function saveChatbotState(state: Record<string, unknown>) {
+  (await cookies()).set({
     name: "elite_chatbot_state",
     value: JSON.stringify(state),
     path: "/",
@@ -36,7 +36,7 @@ export async function saveChatbotState(state: any) {
 
 // Function to get chatbot state from cookie
 export async function getChatbotState() {
-  const stateCookie = cookies().get("elite_chatbot_state")
+  const stateCookie = (await cookies()).get("elite_chatbot_state")
 
   if (stateCookie) {
     try {
@@ -51,7 +51,7 @@ export async function getChatbotState() {
 
 // Function to clear chatbot state
 export async function clearChatbotState() {
-  cookies().delete("elite_chatbot_state")
+  (await cookies()).delete("elite_chatbot_state")
   revalidatePath("/")
   return { success: true }
 }

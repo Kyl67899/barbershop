@@ -54,13 +54,13 @@ export function validateJotFormData(data: JotFormData): {
 
 // Rule-based response generator as fallback
 export function generateRuleBasedResponse(
-  userInput: string,
+  _chatHistory: { role: "user" | "assistant"; content: string }[],
   chatHistory: { role: "user" | "assistant"; content: string }[],
   bookingData?: BookingData,
   jotFormData?: JotFormData,
   isJotFormFlow?: boolean,
 ): string {
-  const input = userInput.toLowerCase()
+  const input = chatHistory[chatHistory.length - 1].content.toLowerCase()
 
   // Check if we're in a JotForm flow and have partial data
   if (isJotFormFlow && jotFormData && Object.keys(jotFormData).length > 0) {
@@ -386,15 +386,16 @@ export function extractBookingInfoRuleBased(userInput: string, currentData: Book
     if (timeMatch) {
       let hour = Number.parseInt(timeMatch[1])
       const minute = timeMatch[2] ? timeMatch[2] : "00"
-      const period = timeMatch[3].toLowerCase()
+      let period = timeMatch[3].toLowerCase()
 
       if (period === "pm" && hour < 12) hour += 12
       if (period === "am" && hour === 12) hour = 0
 
       // Format the time
-      const formattedHour = hour % 12 === 0 ? 12 : hour % 12
-      const ampm = hour >= 12 ? "PM" : "AM"
-      updatedData.time = `${formattedHour}:${minute} ${ampm}`
+      const formattedHour = hour % 12 || 12
+      updatedData.time = `${formattedHour}:${minute} ${period}`
+      updatedData.time = `${formattedHour}:${minute} ${period}`
+      updatedData.time = `${formattedHour}:${minute} ${period}`
     } else {
       // Check for common time phrases
       if (input.includes("morning")) updatedData.time = "10:00 AM"
@@ -471,13 +472,12 @@ export async function generateChatResponse(
   chatHistory: { role: "user" | "assistant"; content: string }[],
   bookingData?: BookingData,
   jotFormData?: JotFormData,
-  isJotFormFlow?: boolean,
-): Promise<string> {
-  try {
-    // Check if OpenAI API key is available or if we should use fallback
+  isJotFormFlow?: boolean
+) {
+  if (!process.env.OPENAI_API_KEY) {
     if (!process.env.OPENAI_API_KEY) {
       console.log("OpenAI API key not found, using rule-based fallback")
-      return generateRuleBasedResponse(userMessage, chatHistory, bookingData, jotFormData, isJotFormFlow)
+      return generateRuleBasedResponse([{ role: "user", content: userMessage }], chatHistory, bookingData, jotFormData, isJotFormFlow)
     }
 
     // Create a system prompt based on the flow
@@ -579,7 +579,7 @@ export async function generateChatResponse(
 
     // Try to generate a response using the AI SDK
     try {
-      const { text } = await generateText({
+      const { text }: { text: string } = await generateText({
         model: openai("gpt-4o"),
         system: systemPrompt,
         messages: chatHistory,
@@ -588,35 +588,41 @@ export async function generateChatResponse(
       })
 
       return text
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error generating AI response:", error)
 
       // Check for quota exceeded error
       if (
-        error.message &&
-        (error.message.includes("quota") ||
-          error.message.includes("billing") ||
-          error.message.includes("rate limit") ||
-          error.message.includes("exceeded"))
+        typeof error === "object" &&
+        error !== null &&
+        "message" in error &&
+        typeof (error as { message: string }).message === "string" &&
+        (error instanceof Error && error.message.includes("quota") ||
+          (error as { message: string }).message.includes("billing") ||
+          (error as { message: string }).message.includes("rate limit") ||
+          (error as { message: string }).message.includes("exceeded"))
       ) {
         console.log("API quota exceeded, switching to rule-based fallback permanently")
         // We could set a global flag here if needed
       }
 
       // Fall back to rule-based response
-      return generateRuleBasedResponse(userMessage, chatHistory, bookingData, jotFormData, isJotFormFlow)
+      return generateRuleBasedResponse([{ role: "user", content: userMessage }], chatHistory, bookingData, jotFormData, isJotFormFlow)
     }
+  try {
+    // Your code here
   } catch (error) {
     console.error("Error in generateChatResponse:", error)
-    return generateRuleBasedResponse(userMessage, chatHistory, bookingData, jotFormData, isJotFormFlow)
+    return generateRuleBasedResponse([{ role: "user", content: userMessage }], chatHistory, bookingData, jotFormData, isJotFormFlow)
   }
 }
 
 // Function to extract JotForm information with fallback
+// Removed duplicate function implementation
 export async function extractJotFormInfo(
   chatHistory: { role: "user" | "assistant"; content: string }[],
   currentData?: JotFormData,
-): Promise<JotFormData> {
+): Promise<JotFormData | undefined> {
   try {
     // Check if OpenAI API key is available
     if (!process.env.OPENAI_API_KEY) {
@@ -627,7 +633,7 @@ export async function extractJotFormInfo(
         return extractJotFormInfoRuleBased(lastUserMessage.content, currentData)
       }
       return currentData || {}
-    }
+      return currentData || {}
 
     // Create a system prompt for information extraction
     const systemPrompt = `
@@ -644,7 +650,8 @@ export async function extractJotFormInfo(
       If the current data already has some fields filled, prioritize new information from the conversation.
     `
 
-    try {
+      //  If the current data already has some fields filled, prioritize new information from the conversation.
+   try {
       // Generate a structured response using the AI SDK
       const { text } = await generateText({
         model: openai("gpt-4o"),
@@ -652,17 +659,15 @@ export async function extractJotFormInfo(
         prompt: JSON.stringify({
           conversation: chatHistory,
           currentData: currentData || {},
-        }),
         temperature: 0,
         maxTokens: 500,
       })
 
       // Parse the JSON response
       try {
-        const extractedData = JSON.parse(text)
+        const extractedData = JSON.parse(text);
         return {
-          ...currentData,
-          ...extractedData,
+          ...currcurrentData      ...currentData,
         }
       } catch (e) {
         console.error("Error parsing extracted data:", e)
@@ -673,16 +678,21 @@ export async function extractJotFormInfo(
         }
         return currentData || {}
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error extracting JotForm info with AI:", error)
 
-      // Check for quota exceeded error
+      // Check for quota exceed          // Check for quota exceeded error
+ed error
       if (
-        error.message &&
-        (error.message.includes("quota") ||
-          error.message.includes("billing") ||
-          error.message.includes("rate limit") ||
-          error.message.includes("exceeded"))
+          // Check for quota exceeded error
+            typeof error === "object" &&
+            error !== null &&
+            "message" in error &&
+            typeof (error as { message: string }).message === "string" &&
+            (error instanceof Error && error.message.includes("quota") ||
+              (error as { message: string }).message.includes("billing") ||
+              (error as { message: string }).message.includes("rate limit") ||
+              (error as { message: string }).message.includes("exceeded"))
       ) {
         console.log("API quota exceeded, switching to rule-based extraction permanently")
         // We could set a global flag here if needed
@@ -704,9 +714,8 @@ export async function extractJotFormInfo(
 // Function to extract booking information with fallback
 export async function extractBookingInfo(
   chatHistory: { role: "user" | "assistant"; content: string }[],
-  currentData?: BookingData,
 ): Promise<BookingData> {
-  try {
+): Promise<BookingData> {
     // Check if OpenAI API key is available
     if (!process.env.OPENAI_API_KEY) {
       console.log("OpenAI API key not found, using rule-based extraction")
@@ -715,7 +724,7 @@ export async function extractBookingInfo(
       if (lastUserMessage) {
         return extractBookingInfoRuleBased(lastUserMessage.content, currentData)
       }
-      return currentData || {}
+        return extractBookingInfoRuleBased(lastUserMessage.content, currentData || {})
     }
 
     // Create a system prompt for information extraction
@@ -763,16 +772,21 @@ export async function extractBookingInfo(
         }
         return currentData || {}
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error extracting booking info with AI:", error)
       
       // Check for quota exceeded error
-      if (error.message && (
-          error.message.includes("quota") || 
-          error.message.includes("billing") || 
-          error.message.includes("rate limit") ||
-          error.message.includes("exceeded")
-        )) {
+      if (
+          typeof error === "object" &&
+          error !== null &&
+          "message" in error &&
+          typeof (error as { message: string }).message === "string" &&
+          (error instanceof Error && error.message.includes("quota") ||
+            (error as { message: string }).message.includes("billing") ||
+            (error as { message: string }).message.includes("rate limit") ||
+            (error as { message: string }).message.includes("exceeded"))
+        ) {
+        {
         console.log("API quota exceeded, switching to rule-based extraction permanently")
         // We could set a global flag here if needed
       }
@@ -788,4 +802,4 @@ export async function extractBookingInfo(
     console.error("Error in extractBookingInfo:", error)
     return currentData || {}
 }
-
+}
