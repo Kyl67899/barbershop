@@ -95,7 +95,7 @@ export default function Booking() {
               <CheckCircle className="h-4 w-4 text-green-600" />
               <AlertTitle>Your information has been pre-filled</AlertTitle>
               <AlertDescription>
-                <p className="mb-2">We've pre-filled the form with the information you provided:</p>
+                <p className="mb-2">We&apos;ve pre-filled the form with the information you provided:</p>
                 <ul className="text-left text-sm space-y-1">
                   {service && (
                     <li>
@@ -140,7 +140,7 @@ export default function Booking() {
               ref={iframeRef}
               id="JotFormIFrame-250767357882168"
               title="Appointment Request Form"
-              allowTransparency={true}
+              allowtransparency={true}
               allow="geolocation; microphone; camera; fullscreen"
               src={jotformUrl}
               frameBorder="0"
