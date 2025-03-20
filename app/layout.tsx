@@ -5,7 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
-// import EliteChatbot from "@/components/elite-chatbot"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Analytics /> */}
+        <Analytics />
         <Navbar />
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />
