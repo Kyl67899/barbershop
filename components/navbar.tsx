@@ -177,9 +177,6 @@ import { cn } from "@/lib/utils"
 //   )
 // }
 
-
-
-
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
