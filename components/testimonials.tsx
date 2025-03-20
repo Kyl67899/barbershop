@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 import { getFeaturedTestimonials } from "@/lib/reviews"
@@ -41,8 +42,8 @@ export default function Testimonials() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our satisfied clients have to say about their experience at
-              Elite Cuts.
+              Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say about their
+              experience at Elite Cuts.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -63,8 +64,8 @@ export default function Testimonials() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients have to say about their experience at
-            Elite Cuts.
+            Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say about their
+            experience at Elite Cuts.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -73,9 +74,11 @@ export default function Testimonials() {
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <img
+                    <Image
                       src={testimonial.avatar_url || "/placeholder.svg"}
                       alt={testimonial.name}
+                      width={48}
+                      height={48}
                       className="w-full h-full object-cover"
                     />
                   </div>

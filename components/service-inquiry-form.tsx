@@ -48,7 +48,7 @@ export default function ServiceInquiryForm({ serviceName }: ServiceInquiryFormPr
       <CardHeader>
         <CardTitle>Inquire About This Service</CardTitle>
         <CardDescription>
-          Have questions about our {serviceName} service? Send us a message and we'll get back to you.
+          Have questions about our {serviceName} service? Send us a message and we&apos;ll get back to you.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -307,17 +307,18 @@ export default function EliteChatbot() {
               jotFormData,
             )
           }
-        } catch (error: any) {
+        } catch (error: Error | unknown) {
+          const err = error as Error
           console.error("Error using AI services:", error)
           setApiErrorCount((prev) => prev + 1)
 
           // Switch to fallback mode immediately if quota exceeded
           if (
-            error.message &&
-            (error.message.includes("quota") ||
-              error.message.includes("billing") ||
-              error.message.includes("rate limit") ||
-              error.message.includes("exceeded"))
+            err.message &&
+            (err.message.includes("quota") ||
+              err.message.includes("billing") ||
+              err.message.includes("rate limit") ||
+              err.message.includes("exceeded"))
           ) {
             setUseFallbackMode(true)
             console.log("Switching to fallback mode due to API quota exceeded")
@@ -460,17 +461,18 @@ export default function EliteChatbot() {
               jotFormData,
             )
           }
-        } catch (error: any) {
+        } catch (error: Error | unknown) {
+          const err = error as Error
           console.error("Error using AI services:", error)
           setApiErrorCount((prev) => prev + 1)
 
           // Switch to fallback mode immediately if quota exceeded
           if (
-            error.message &&
-            (error.message.includes("quota") ||
-              error.message.includes("billing") ||
-              error.message.includes("rate limit") ||
-              error.message.includes("exceeded"))
+            err.message &&
+            (err.message.includes("quota") ||
+              err.message.includes("billing") ||
+              err.message.includes("rate limit") ||
+              err.message.includes("exceeded"))
           ) {
             setUseFallbackMode(true)
             console.log("Switching to fallback mode due to API quota exceeded")
