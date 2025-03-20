@@ -5,6 +5,13 @@ import Image from "next/image"
 import { CheckCircle } from "lucide-react"
 import dynamic from "next/dynamic"
 
+// Add this type declaration at the top of the file, after the imports
+declare global {
+  interface Window {
+    jotformEmbedHandler: (selector: string, baseUrl: string) => void
+  }
+}
+
 // Import the service inquiry form with no SSR
 const ServiceInquiryFormWrapper = dynamic(() => import("@/components/service-inquiry-form-wrapper"), {
   ssr: false,

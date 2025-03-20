@@ -5,6 +5,12 @@ import { useSearchParams } from "next/navigation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CheckCircle } from "lucide-react"
 
+declare global {
+  interface Window {
+    jotformEmbedHandler: (selector: string, baseUrl: string) => void
+  }
+}
+
 export default function BookingForm() {
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const searchParams = useSearchParams()
