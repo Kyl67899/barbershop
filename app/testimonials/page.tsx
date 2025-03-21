@@ -2,6 +2,8 @@ import { getTestimonials } from "@/lib/reviews"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default async function TestimonialsPage() {
   const testimonials = await getTestimonials()
@@ -18,7 +20,7 @@ export default async function TestimonialsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="overflow-hidden">
+            <Card key={testimonial.id} className="overflow-hidden hover:shadow-lg ">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4 relative">
@@ -50,6 +52,11 @@ export default async function TestimonialsPage() {
             </Card>
           ))}
         </div>
+        <Button asChild className="text-blue-500  flex items-center justify-center mt-4">
+          <Link href="#">
+             Read more reviews
+          </Link>
+        </Button>
       </div>
     </div>
   )
