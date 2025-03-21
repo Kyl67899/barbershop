@@ -11,7 +11,7 @@ export default function HotTowelShavePage() {
     <ServicePageClient
       serviceName="Hot Towel Shave"
       description="Luxurious traditional hot towel shave experience"
-      imageSrc="/images/hot-towel-shave-service.jpg"
+      imageSrc="https://static.vecteezy.com/system/resources/thumbnails/006/199/995/small_2x/men-s-hairstyling-and-haircutting-in-a-barber-shop-or-hair-salon-photo.jpg"
       price="$35"
       duration="40 minutes"
       recommendedFor="Special occasions, relaxation, skin rejuvenation"

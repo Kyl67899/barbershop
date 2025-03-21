@@ -7,7 +7,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: "url('/images/hero-barbershop.jpg')",
+          backgroundImage: "url('https://th.bing.com/th/id/OIP.n85tZ-Gt820l8IKdjgTjzgHaFe?rs=1&pid=ImgDetMain')",
           filter: "brightness(0.4)",
         }}
       />

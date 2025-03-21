@@ -11,7 +11,7 @@ export default function KidsHaircutPage() {
     <ServicePageClient
       serviceName="Kids Haircut"
       description="Gentle, fun haircuts in a kid-friendly environment"
-      imageSrc="/images/kids-haircut-service.jpg"
+      imageSrc="https://th.bing.com/th/id/OIP.sGoe0fUGTaO50iDc3PTLdAHaE8?rs=1&pid=ImgDetMain"
       price="$20"
       duration="20-30 minutes"
       recommendedFor="Children ages 2-12"

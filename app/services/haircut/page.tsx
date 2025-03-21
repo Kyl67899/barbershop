@@ -11,7 +11,7 @@ export default function HaircutPage() {
     <ServicePageClient
       serviceName="Premium Haircut"
       description="Precision haircut tailored to your style and preference"
-      imageSrc="/images/premium-haircut.jpg"
+      imageSrc="https://th.bing.com/th/id/OIP.wb91Ot3of2gvobjP18ujWgHaFD?rs=1&pid=ImgDetMain"
       price="$30"
       duration="30 minutes"
       recommendedFor="All hair types and styles"

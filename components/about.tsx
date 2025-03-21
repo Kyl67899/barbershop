@@ -10,7 +10,7 @@ export default function About() {
           <div className="relative">
             <div className="aspect-square overflow-hidden rounded-lg">
               <Image
-                src="/images/barber-at-work.jpg"
+                src="https://wallpapercave.com/wp/wp3067027.jpg"
                 alt="Barber at work"
                 width={800}
                 height={800}

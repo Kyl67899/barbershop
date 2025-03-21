@@ -107,7 +107,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-video overflow-hidden rounded-lg">
                 <Image
-                  src="/images/barbershop-values.jpg"
+                  src="https://wallpapercave.com/wp/wp3067027.jpg"
                   alt="Our barbershop"
                   width={800}
                   height={600}

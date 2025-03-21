@@ -11,7 +11,7 @@ export default function HairStylingPage() {
     <ServicePageClient
       serviceName="Hair Styling"
       description="Professional styling with premium products"
-      imageSrc="/images/hair-styling-service.jpg"
+      imageSrc="https://th.bing.com/th/id/OIP.B7WdSB7It60liYZ_SAwh3wHaE7?rs=1&pid=ImgDetMain"
       price="$25"
       duration="25 minutes"
       recommendedFor="Special occasions, professional events, photoshoots"

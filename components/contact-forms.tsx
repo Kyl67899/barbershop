@@ -47,8 +47,10 @@ export default function ContactForm() {
       await sendContactForm(formData)
 
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message sent successfully!",
+        description: "Thank you for contacting us. We'll get back to you as soon as possible.",
+        variant: "default",
+        className: "bg-green-50 border-green-200 text-green-800",
       })
 
       // Reset form
@@ -57,10 +59,11 @@ export default function ContactForm() {
       setSubject("")
       setMessage("")
       e.currentTarget.reset()
-    } catch {
+    } catch (error) {
+      console.error("Error sending contact form:", error)
       toast({
-        title: "Something went wrong",
-        description: "Please try again later",
+        title: "Error sending message",
+        description: error instanceof Error ? error.message : "Please try again later or contact us directly by phone.",
         variant: "destructive",
       })
     } finally {

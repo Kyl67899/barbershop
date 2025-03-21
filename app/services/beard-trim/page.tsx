@@ -11,7 +11,7 @@ export default function BeardTrimPage() {
     <ServicePageClient
       serviceName="Beard Trim"
       description="Expert beard shaping and styling for a refined look"
-      imageSrc="/images/beard-trim-service.jpg"
+      imageSrc="https://th.bing.com/th/id/OIP.xpyoFM9GkZbDlGXcFDnCYAHaE8?w=275&h=183&c=7&r=0&o=5&dpr=2&pid=1.7"
       price="$20"
       duration="20 minutes"
       recommendedFor="All beard types and lengths"

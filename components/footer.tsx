@@ -30,7 +30,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Home", "Services", "About", "Gallery", "Testimonials", "Booking", "Contact"].map((item) => (
                 <li key={item}>
-                  <Link href={`#${item.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors">
+                  <Link href={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -44,7 +44,7 @@ export default function Footer() {
               {["Haircut", "Beard Trim", "Hair Styling", "Hot Towel Shave", "Hair Coloring", "Kids Haircut"].map(
                 (item) => (
                   <li key={item}>
-                    <Link href="#services" className="text-gray-400 hover:text-white transition-colors">
+                    <Link href={`/services`} className="text-gray-400 hover:text-white transition-colors">
                       {item}
                     </Link>
                   </li>
