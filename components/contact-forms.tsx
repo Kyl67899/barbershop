@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,6 +16,7 @@ import Map from "@/components/map"
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const searchParams = useSearchParams()
+  const formRef = useRef<HTMLFormElement>(null)
 
   // Form state
   const [name, setName] = useState("")
@@ -53,12 +54,16 @@ export default function ContactForm() {
         className: "bg-green-50 border-green-200 text-green-800",
       })
 
-      // Reset form
+      // Reset form using state
       setName("")
       setEmail("")
       setSubject("")
       setMessage("")
-      e.currentTarget.reset()
+
+      // Reset the form if the ref is available
+      if (formRef.current) {
+        formRef.current.reset()
+      }
     } catch (error) {
       console.error("Error sending contact form:", error)
       toast({
@@ -83,7 +88,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="contact-name">Name</Label>

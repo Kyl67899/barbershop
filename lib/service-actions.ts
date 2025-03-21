@@ -4,8 +4,10 @@ import { Resend } from "resend"
 import { z } from "zod"
 import { revalidatePath } from "next/cache"
 
+const RESEND_API_KEY="re_SEBWmM8d_3RmbhyFtcfhKFWcQakLooxek"
+
 // Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY || RESEND_API_KEY)
 
 // Validation schema
 const serviceInquirySchema = z.object({
