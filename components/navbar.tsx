@@ -238,8 +238,8 @@ export default function Navbar() {
                   <button
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
-                      "flex items-center hover:text-primary focus:outline-none transition-colors",
-                      pathname.startsWith(link.href) ? "text-primary" : "",
+                      "flex items-center hover:text-white focus:outline-none transition-colors",
+                      pathname.startsWith(link.href) ? "text-white" : "",
                     )}
                   >
                     {link.name}
@@ -297,7 +297,7 @@ export default function Navbar() {
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
                     className={cn(
                       "flex items-center hover:text-primary focus:outline-none transition-colors w-full",
-                      pathname.startsWith(link.href) ? "text-primary" : "",
+                      pathname.startsWith(link.href) ? "text-white" : "",
                     )}
                   >
                     {link.name}
