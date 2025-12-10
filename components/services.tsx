@@ -36,7 +36,7 @@ const services = [
     duration: "40 min",
     slug: "hot-towel-shave",
   },
-]
+];
 
 export default function Services() {
   return (

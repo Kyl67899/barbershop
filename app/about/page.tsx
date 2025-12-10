@@ -9,6 +9,34 @@ export const metadata: Metadata = {
 }
 
 export default function AboutPage() {
+
+  const barber = 
+  [
+    { name: "John Smith", role: "Master Barber", experience: "15+ years" },
+    { name: "Michael Johnson", role: "Style Specialist", experience: "10+ years" },
+    { name: "David Williams", role: "Beard Expert", experience: "8+ years" },
+  ];
+
+  const cuts = 
+  [
+    "Precision Cuts", 
+    "Styling", 
+    "Beard Grooming"
+  ];
+
+  const testi = [
+    { title: "Excellence", desc: "We strive for perfection in every cut and service we provide." },
+    {
+      title: "Integrity",
+      desc: "We&apos;re honest, transparent, and committed to doing what&apos;s right.",
+    },
+    {
+      title: "Community",
+      desc: "We&apos;re proud to be part of our local community and give back whenever possible.",
+    },
+    { title: "Innovation", desc: "We continuously learn and adopt new techniques and styles." },
+  ]
+
   return (
     <div className="min-h-screen">
       <div className="bg-black text-white py-20">
@@ -33,11 +61,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: "John Smith", role: "Master Barber", experience: "15+ years" },
-              { name: "Michael Johnson", role: "Style Specialist", experience: "10+ years" },
-              { name: "David Williams", role: "Beard Expert", experience: "8+ years" },
-            ].map((barber, index) => (
+            {barber.map((barber, index) => (
               <div key={index} className="text-center">
                 <div className="relative mx-auto rounded-full overflow-hidden w-48 h-48 mb-6">
                   <Image
@@ -54,7 +78,7 @@ export default function AboutPage() {
                 <p className="text-primary mb-2">{barber.role}</p>
                 <p className="text-muted-foreground mb-4">{barber.experience} experience</p>
                 <div className="flex justify-center gap-2">
-                  {["Precision Cuts", "Styling", "Beard Grooming"].map((skill, i) => (
+                  {cuts.map((skill, i) => (
                     <span
                       key={i}
                       className="inline-flex items-center text-xs bg-primary/10 text-primary px-2 py-1 rounded"
@@ -81,18 +105,7 @@ export default function AboutPage() {
               </p>
 
               <div className="space-y-4">
-                {[
-                  { title: "Excellence", desc: "We strive for perfection in every cut and service we provide." },
-                  {
-                    title: "Integrity",
-                    desc: "We&apos;re honest, transparent, and committed to doing what&apos;s right.",
-                  },
-                  {
-                    title: "Community",
-                    desc: "We&apos;re proud to be part of our local community and give back whenever possible.",
-                  },
-                  { title: "Innovation", desc: "We continuously learn and adopt new techniques and styles." },
-                ].map((value, index) => (
+                {testi.map((value, index) => (
                   <div key={index} className="flex gap-4">
                     <CheckCircle className="text-primary h-6 w-6 shrink-0 mt-1" />
                     <div>

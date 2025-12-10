@@ -2,6 +2,28 @@ import Link from "next/link"
 import { Facebook, Instagram, Twitter } from "lucide-react"
 
 export default function Footer() {
+
+  const services = 
+  [
+    "Haircut", 
+    "Beard Trim", 
+    "Hair Styling", 
+    "Hot Towel Shave", 
+    "Hair Coloring", 
+    "Kids Haircut"
+  ];
+
+  const nav =
+  [
+    "Home", 
+    "Services", 
+    "About", 
+    "Gallery", 
+    "Testimonials", 
+    "Booking", 
+    "Contact"
+  ];
+
   return (
     <footer className="bg-black text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -28,7 +50,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "Services", "About", "Gallery", "Testimonials", "Booking", "Contact"].map((item) => (
+              {nav.map((item) => (
                 <li key={item}>
                   <Link href={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors">
                     {item}
@@ -41,7 +63,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Services</h3>
             <ul className="space-y-2">
-              {["Haircut", "Beard Trim", "Hair Styling", "Hot Towel Shave", "Hair Coloring", "Kids Haircut"].map(
+              {services.map(
                 (item) => (
                   <li key={item}>
                     <Link href={`/services`} className="text-gray-400 hover:text-white transition-colors">
@@ -74,6 +96,9 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Elite Cuts. All rights reserved.</p>
+          <p className="">
+            Created by <a href="https://kylepprofile.dev">Kyle Parsotan</a> 
+          </p>
         </div>
       </div>
     </footer>
