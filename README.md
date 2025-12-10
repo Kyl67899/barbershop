@@ -38,16 +38,21 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Project Structure](#project-structure)
-    - [Project Index](#project-index)
-- [Contributing](#contributing)
-
+- [BARBERSHOP](#barbershop)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Project Structure](#project-structure)
+		- [Project Index](#project-index)
+	- [Getting Started](#getting-started)
+		- [Prerequisites](#prerequisites)
+		- [Installation](#installation)
+		- [Usage](#usage)
+		- [Testing](#testing)
+	- [Contributing](#contributing)
+- [how to update all packages](#how-to-update-all-packages)
+- [npm i -g npm-check-updates](#npm-i--g-npm-check-updates)
+- [ncu -u](#ncu--u)
+- [npm install](#npm-install)
 ---
 
 ## Overview
@@ -816,3 +821,8 @@ npm test
 <div align="left"><a href="#top">⬆ Return</a></div>
 
 ---
+
+# how to update all packages
+# npm i -g npm-check-updates
+# ncu -u
+# npm install

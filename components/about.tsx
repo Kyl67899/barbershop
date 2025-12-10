@@ -3,6 +3,15 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
 
 export default function About() {
+
+  const services = 
+  [
+    "Premium Products", 
+    "Expert Barbers", 
+    "Clean Environment", 
+    "Modern Techniques"
+  ];
+
   return (
     <section id="about" className="py-20">
       <div className="container mx-auto px-4">
@@ -36,7 +45,7 @@ export default function About() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {["Premium Products", "Expert Barbers", "Clean Environment", "Modern Techniques"].map((item, index) => (
+              {services.map((item, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <CheckCircle className="text-primary h-5 w-5" />
                   <span>{item}</span>
