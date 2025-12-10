@@ -49,10 +49,6 @@
 		- [Usage](#usage)
 		- [Testing](#testing)
 	- [Contributing](#contributing)
-- [how to update all packages](#how-to-update-all-packages)
-- [npm i -g npm-check-updates](#npm-i--g-npm-check-updates)
-- [ncu -u](#ncu--u)
-- [npm install](#npm-install)
 ---
 
 ## Overview
