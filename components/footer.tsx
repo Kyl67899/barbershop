@@ -64,6 +64,7 @@ export default function Footer() {
             </ul>
           </div>
 
+          <div></div>
           <div>
             <h3 className="text-xl font-bold mb-4">Services</h3>
             <ul className="space-y-2">
