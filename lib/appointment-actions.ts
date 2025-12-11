@@ -36,14 +36,14 @@ export async function bookAppointment(formData: FormData) {
     })
 
     if (!validationResult.success) {
-      console.error("Validation error:", validationResult.error.errors)
-      throw new Error(validationResult.error.errors[0].message)
+      console.error("Validation error:", validationResult.error)
+      throw new Error(validationResult.error.issues[0].message)
     }
 
     const { name, email, phone, service, date, time, notes } = validationResult.data
 
     // Generate a unique ID for the appointment
-    const appointmentId = uuidv4()
+    const appointmentId = uuidv4();
 
     // Parse the date string to a Date object
     let dateObj: Date
