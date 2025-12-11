@@ -365,7 +365,8 @@ export function extractBookingInfoRuleBased(userInput: string, currentData: Book
           "october",
           "november",
           "december",
-        ]
+        ];
+        
         const month = months.indexOf(monthDayMatch[1].toLowerCase())
         const day = Number.parseInt(monthDayMatch[2])
         const year = new Date().getFullYear()
@@ -412,7 +413,7 @@ export function extractBookingInfoRuleBased(userInput: string, currentData: Book
         "3:00 PM",
         "4:00 PM",
         "5:00 PM",
-      ]
+      ];
 
       for (const slot of availableSlots) {
         if (input.includes(slot.toLowerCase())) {
