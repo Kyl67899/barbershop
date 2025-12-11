@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Working Hours</h3>
+            <h3 className="text-xl font-bold mb-4">Working Hour</h3>
             <ul className="space-y-2">
               <li className="flex justify-between text-gray-400">
                 <span>Monday - Friday</span>
