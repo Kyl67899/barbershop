@@ -71,7 +71,7 @@ export default function Footer() {
                 (item) => (
                   <li key={item.name}>
                     <Link
-                      key={item.nam}
+                      key={item.name}
                       href={item.href}
                       className="text-gray-400 hover:text-white transition-colors"
                     >
