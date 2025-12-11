@@ -584,8 +584,8 @@ export async function generateChatResponse(
         system: systemPrompt,
         messages: chatHistory,
         temperature: 0.7,
-        maxTokens: 500,
-      })
+        max_output_tokens: 500,
+      })      
 
       return text
     } catch (error: unknown) {
@@ -655,7 +655,7 @@ export async function extractJotFormInfo(
           currentData: currentData || {},
         }),
         temperature: 0,
-        maxTokens: 500,
+        maxOutputTokens: 500,
       })
 
       // Parse the JSON response
@@ -746,7 +746,7 @@ export async function extractBookingInfo(
           currentData: currentData || {},
         }),
         temperature: 0,
-        maxTokens: 500,
+        maxOutputTokens: 500,
       })
 
       // Parse the JSON response

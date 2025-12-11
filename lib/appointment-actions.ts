@@ -5,10 +5,8 @@ import { v4 as uuidv4 } from "uuid"
 import { revalidatePath } from "next/cache"
 import { z } from "zod"
 
-const RESEND_API_KEY="re_SEBWmM8d_3RmbhyFtcfhKFWcQakLooxek"
-
 // Initialize Resend with error handling
-const resend = new Resend(RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Validation schema
 const appointmentSchema = z.object({
