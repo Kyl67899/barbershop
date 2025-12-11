@@ -33,7 +33,7 @@ export async function submitServiceInquiry(formData: FormData) {
     })
 
     if (!validationResult.success) {
-      throw new Error(validationResult.error.errors[0].message)
+      throw new Error(validationResult.error.message)
     }
 
     const { name, email, phone, service, message, preferredDate } = validationResult.data
