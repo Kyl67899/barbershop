@@ -69,7 +69,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {serviceLinks.map(
                 (item) => (
-                  <li key={item}>
+                  <li key={item.name}>
                     <Link
                       key={item.name}
                       href={item.href}
