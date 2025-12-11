@@ -4,10 +4,8 @@ import { Resend } from "resend"
 import { z } from "zod"
 import { revalidatePath } from "next/cache"
 
-const RESEND_API_KEY="re_SEBWmM8d_3RmbhyFtcfhKFWcQakLooxek"
-
 // Initialize Resend
-const resend = new Resend(RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Validation schema for contact form
 const contactFormSchema = z.object({
@@ -19,7 +17,6 @@ const contactFormSchema = z.object({
 
 export async function sendContactForm(formData: FormData) {
   try {
-    // Validate form data
     const validationResult = contactFormSchema.safeParse({
       name: formData.get("name"),
       email: formData.get("email"),
@@ -28,7 +25,7 @@ export async function sendContactForm(formData: FormData) {
     })
 
     if (!validationResult.success) {
-      throw new Error(validationResult.error.errors[0].message)
+      throw new Error(validationResult.error.issues[0].message)
     }
 
     const { name, email, subject, message } = validationResult.data
@@ -42,24 +39,24 @@ export async function sendContactForm(formData: FormData) {
         <h1>Contact Form Submission Confirmation</h1>
         <p>Dear ${name},</p>
         <p>Thank you for contacting Elite Cuts. We have received your message and will get back to you shortly.</p>
-        <p>Here's a summary of your message:</p>
+
+        <h2>Message Summary</h2>
         <ul>
           <li><strong>Subject:</strong> ${subject}</li>
           <li><strong>Message:</strong> ${message}</li>
         </ul>
-        <p>If you have any additional questions, please feel free to contact us.</p>
-        <p>Thank you for choosing Elite Cuts!</p>
+
+        <p>If you have more questions, feel free to reply to this email.</p>
       `,
     })
 
     // Send notification to the barbershop
     await resend.emails.send({
       from: "notifications@elitecuts.com",
-      to: "shuttle876@gmail.com", // This would be the barbershop's email
+      to: "shuttle876@gmail.com",
       subject: `New Contact Form Submission: ${subject}`,
       html: `
         <h1>New Contact Form Submission</h1>
-        <p>A new contact form has been submitted:</p>
         <ul>
           <li><strong>Name:</strong> ${name}</li>
           <li><strong>Email:</strong> ${email}</li>
@@ -87,13 +84,12 @@ const newsletterSchema = z.object({
 
 export async function subscribeToNewsletter(formData: FormData) {
   try {
-    // Validate form data
     const validationResult = newsletterSchema.safeParse({
       email: formData.get("email"),
     })
 
     if (!validationResult.success) {
-      throw new Error(validationResult.error.errors[0].message)
+      throw new Error(validationResult.error.issues[0].message)
     }
 
     const { email } = validationResult.data
@@ -106,22 +102,17 @@ export async function subscribeToNewsletter(formData: FormData) {
       html: `
         <h1>Newsletter Subscription Confirmation</h1>
         <p>Thank you for subscribing to the Elite Cuts newsletter!</p>
-        <p>You will now receive updates on our latest promotions, events, and styling tips.</p>
-        <p>If you did not subscribe to our newsletter, please ignore this email.</p>
       `,
     })
 
-    // Send notification to the barbershop
+    // Notify barbershop
     await resend.emails.send({
       from: "notifications@elitecuts.com",
-      to: "shuttle876@gmail.com", // This would be the barbershop's email
+      to: "shuttle876@gmail.com",
       subject: "New Newsletter Subscription",
       html: `
         <h1>New Newsletter Subscription</h1>
-        <p>A new user has subscribed to the newsletter:</p>
-        <ul>
-          <li><strong>Email:</strong> ${email}</li>
-        </ul>
+        <p><strong>Email:</strong> ${email}</p>
       `,
     })
 
@@ -134,4 +125,3 @@ export async function subscribeToNewsletter(formData: FormData) {
     throw new Error("Failed to subscribe to newsletter. Please try again later.")
   }
 }
-
