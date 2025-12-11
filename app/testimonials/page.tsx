@@ -52,7 +52,7 @@ export default async function TestimonialsPage() {
             </Card>
           ))}
         </div>
-        <Button asChild className="text-blue-500  flex items-center justify-center mt-4">
+        <Button asChild className="bg-white text-black hover:bg-black hover:text-white flex items-center justify-center mt-4">
           <Link href="#">
              Read more reviews
           </Link>

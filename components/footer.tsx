@@ -3,26 +3,25 @@ import { Facebook, Instagram, Twitter } from "lucide-react"
 
 export default function Footer() {
 
-  const services = 
-  [
-    "Haircut", 
-    "Beard Trim", 
-    "Hair Styling", 
-    "Hot Towel Shave", 
-    "Hair Coloring", 
-    "Kids Haircut"
-  ];
-
   const nav =
-  [
-    "Home", 
-    "Services", 
-    "About", 
-    "Gallery", 
-    "Testimonials", 
-    "Booking", 
-    "Contact"
-  ];
+    [
+      "Services",
+      "About",
+      "Gallery",
+      "Testimonials",
+      "Booking",
+      "Contact"
+    ];
+
+  const serviceLinks =
+    [
+      { name: "Haircut", href: "/services/haircut" },
+      { name: "Beard Trim", href: "/services/beard-trim" },
+      { name: "Hair Styling", href: "/services/hair-styling" },
+      { name: "Hot Towel Shave", href: "/services/hot-towel-shave" },
+      { name: "Hair Coloring", href: "/services/hair-coloring" },
+      { name: "Kids Haircut", href: "/services/kids-haircut" },
+    ];
 
   return (
     <footer className="bg-black text-white pt-16 pb-8">
@@ -50,6 +49,11 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
+              <li>
+                <Link className="text-gray-400 hover:text-white transition-colors" href={"/"}>
+                  Home
+                </Link>
+              </li>
               {nav.map((item) => (
                 <li key={item}>
                   <Link href={`/${item.toLowerCase()}`} className="text-gray-400 hover:text-white transition-colors">
@@ -63,14 +67,18 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Services</h3>
             <ul className="space-y-2">
-              {services.map(
+              {serviceLinks.map(
                 (item) => (
                   <li key={item}>
-                    <Link href={`/services`} className="text-gray-400 hover:text-white transition-colors">
-                      {item}
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
                     </Link>
                   </li>
-                ),
+                )
               )}
             </ul>
           </div>
@@ -97,7 +105,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Elite Cuts. All rights reserved.</p>
           <p className="">
-            Created by <a href="https://kylepprofile.dev">Kyle Parsotan</a> 
+            Created by <a href="https://kylepprofile.dev">Kyle Parsotan</a>
           </p>
         </div>
       </div>

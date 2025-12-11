@@ -34,7 +34,7 @@ export default function Navbar() {
     { name: "Gallery", href: "/gallery" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "Contact", href: "/contact" },
-  ]
+  ];
 
   const serviceLinks = [
     { name: "Haircut", href: "/services/haircut" },
@@ -43,7 +43,7 @@ export default function Navbar() {
     { name: "Hot Towel Shave", href: "/services/hot-towel-shave" },
     { name: "Hair Coloring", href: "/services/hair-coloring" },
     { name: "Kids Haircut", href: "/services/kids-haircut" },
-  ]
+  ];
 
   return (
     <nav
@@ -98,7 +98,7 @@ export default function Navbar() {
             )}
             <Link
               href="/booking"
-              className="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-md transition-colors"
+              className="bg-amber-900 hover:bg-amber-800/90 text-white px-5 py-2 rounded-md transition-colors"
             >
               Book Now
             </Link>
@@ -166,7 +166,7 @@ export default function Navbar() {
             )}
             <Link
               href="/booking"
-              className="block bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-md transition-colors text-center"
+              className="bg-primary hover:bg-primary/90 text-black px-5 py-2 rounded-md transition-colors"
             >
               Book Now
             </Link>

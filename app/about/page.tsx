@@ -10,19 +10,65 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 
-  const barber = 
-  [
-    { name: "John Smith", role: "Master Barber", experience: "15+ years" },
-    { name: "Michael Johnson", role: "Style Specialist", experience: "10+ years" },
-    { name: "David Williams", role: "Beard Expert", experience: "8+ years" },
-  ];
-
-  const cuts = 
-  [
-    "Precision Cuts", 
-    "Styling", 
-    "Beard Grooming"
-  ];
+  const barber =
+    [
+      {
+        name: "John Smith",
+        role: "Master Barber",
+        experience: "15+ years",
+        cuts:
+          [
+            "Haircut",
+            "Styling",
+            "Beard Grooming"
+          ]
+      },
+      {
+        name: "Kyle Smith",
+        role: "Style Specialist",
+        experience: "15+ years",
+        cuts:
+          [
+            "Haircut",
+            "Styling",
+            "Beard Grooming"
+          ]
+      },
+      {
+        name: "Michael Johnson",
+        role: "Style Specialist",
+        experience: "10+ years",
+        cuts:
+          [
+            "Precision Cuts",
+            "Styling",
+            "Hair Coloring"
+          ]
+      },
+      {
+        name: "David Williams",
+        role: "Beard Expert",
+        experience: "8+ years",
+        cuts:
+          [
+            "Precision Cuts",
+            "Styling",
+            "Kids Haircut"
+          ]
+      },
+      {
+        name: "Dave Sent",
+        role: "Master Barber",
+        experience: "12+ years",
+        cuts:
+          [
+            "Precision Cuts",
+            "Styling",
+            "Beard Trim",
+            "Kids Haircut"
+          ]
+      },
+    ];
 
   const testi = [
     { title: "Excellence", desc: "We strive for perfection in every cut and service we provide." },
@@ -62,7 +108,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {barber.map((barber, index) => (
-              <div key={index} className="text-center">
+              <div key={index} className="text-center ">
                 <div className="relative mx-auto rounded-full overflow-hidden w-48 h-48 mb-6">
                   <Image
                     src={`/placeholder.svg?height=200&width=200&text=${barber.name
@@ -78,10 +124,10 @@ export default function AboutPage() {
                 <p className="text-primary mb-2">{barber.role}</p>
                 <p className="text-muted-foreground mb-4">{barber.experience} experience</p>
                 <div className="flex justify-center gap-2">
-                  {cuts.map((skill, i) => (
+                  {barber.cuts.map((skill, i) => (
                     <span
                       key={i}
-                      className="inline-flex items-center text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+                      className="inline-flex items-center text-xs bg-gray-300 text-black px-2 py-1 rounded "
                     >
                       {skill}
                     </span>

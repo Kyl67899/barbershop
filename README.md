@@ -49,7 +49,6 @@
 		- [Usage](#usage)
 		- [Testing](#testing)
 	- [Contributing](#contributing)
----
 
 ## Overview
 

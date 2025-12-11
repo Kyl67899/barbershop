@@ -66,7 +66,7 @@ export default function ServicePageClient({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 px-5 pb-3">
           <h2 className="text-3xl font-bold mb-6">Service Details</h2>
           <p className="text-lg text-muted-foreground mb-6">
             Our {serviceName.toLowerCase()} service is designed to help you maintain a well-groomed and stylish look
@@ -111,7 +111,7 @@ export default function ServicePageClient({
         </div>
 
         <div>
-          <div className="bg-muted p-6 rounded-xl sticky top-24">
+          <div className="bg-gray-200 p-6 rounded-xl sticky top-24">
             <h3 className="text-xl font-bold mb-4">Service Information</h3>
 
             <div className="space-y-4 mb-6">
@@ -136,13 +136,13 @@ export default function ServicePageClient({
               <div className="flex flex-wrap gap-2">
                 {styles &&
                   styles.map((style, index) => (
-                    <span key={index} className="bg-background px-3 py-1 rounded-full text-sm">
+                    <span key={index} className="bg-white px-3 py-1 rounded-full text-sm">
                       {style}
                     </span>
                   ))}
                 {benefits &&
                   benefits.map((benefit, index) => (
-                    <span key={index} className="bg-background px-3 py-1 rounded-full text-sm">
+                    <span key={index} className="bg-white px-3 py-1 rounded-full text-sm">
                       {benefit}
                     </span>
                   ))}

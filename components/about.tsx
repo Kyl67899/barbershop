@@ -26,7 +26,7 @@ export default function About() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-primary text-white p-6 rounded-lg hidden md:block">
+            <div className="absolute -bottom-8 -right-8 bg-black text-white p-6 rounded-lg hidden md:block">
               <p className="text-3xl font-bold">15+</p>
               <p className="text-sm">Years of Experience</p>
             </div>
@@ -53,7 +53,7 @@ export default function About() {
               ))}
             </div>
 
-            <Button size="lg" className="text-lg">
+            <Button size="lg" className="text-lg bg-white text-black hover:bg-black hover:text-white">
               Learn More
             </Button>
           </div>

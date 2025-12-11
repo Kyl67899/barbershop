@@ -99,6 +99,7 @@ export default function ContactForm() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    className="border-0"
                   />
                 </div>
                 <div className="space-y-2">
@@ -111,6 +112,7 @@ export default function ContactForm() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="border-0"
                   />
                 </div>
               </div>
@@ -124,6 +126,7 @@ export default function ContactForm() {
                   required
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
+                  className="border-0"
                 />
               </div>
 
@@ -137,10 +140,11 @@ export default function ContactForm() {
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  className="border-0"
                 />
               </div>
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Button type="submit" className="w-full bg-white text-black hover:bg-black hover:text-white" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
@@ -149,7 +153,7 @@ export default function ContactForm() {
           <div>
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0">
                 <CardContent className="flex items-start gap-4 pt-6">
                   <MapPin className="h-6 w-6 text-primary shrink-0" />
                   <div>
@@ -163,7 +167,7 @@ export default function ContactForm() {
                 </CardContent>
               </Card>
 
-              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0">
                 <CardContent className="flex items-start gap-4 pt-6">
                   <Phone className="h-6 w-6 text-primary shrink-0" />
                   <div>
@@ -177,7 +181,7 @@ export default function ContactForm() {
                 </CardContent>
               </Card>
 
-              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0">
                 <CardContent className="flex items-start gap-4 pt-6">
                   <Mail className="h-6 w-6 text-primary shrink-0" />
                   <div>
@@ -191,7 +195,7 @@ export default function ContactForm() {
                 </CardContent>
               </Card>
 
-              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0">
                 <CardContent className="flex items-start gap-4 pt-6">
                   <Clock className="h-6 w-6 text-primary shrink-0" />
                   <div>

@@ -74,7 +74,7 @@ export default function Services() {
 
         <div className="mt-12 text-center">
           <Button asChild size="lg">
-            <Link href="/services">View All Services</Link>
+            <Link className="bg-white hover:bg-black text-black hover:text-white" href="/services">View All Services</Link>
           </Button>
         </div>
       </div>

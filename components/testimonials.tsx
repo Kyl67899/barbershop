@@ -78,9 +78,10 @@ export default function Testimonials() {
             experience at Elite Cuts.
           </p>
         </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="overflow-hidden">
+            <Card key={testimonial.id} className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
