@@ -584,7 +584,7 @@ export async function generateChatResponse(
         system: systemPrompt,
         messages: chatHistory,
         temperature: 0.7,
-        max_output_tokens: 500,
+        maxOutputTokens: 500,
       })      
 
       return text
