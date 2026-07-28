@@ -1,119 +1,33 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star } from "lucide-react"
+import { Quote, Star } from "lucide-react"
 import { getFeaturedTestimonials } from "@/lib/reviews"
-
-type Testimonial = {
-  id: string
-  name: string
-  avatar_url?: string
-  rating: number
-  content: string
-  status?: string
-  created_at: string
-}
+import { Reveal } from "@/components/motion-reveal"
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    async function loadTestimonials() {
-      try {
-        const data = await getFeaturedTestimonials()
-        // Transform the data to match the Testimonial type
-        const formattedData = data.map((item) => ({
-          id: item.id,
-          name: item.name,
-          avatar_url: item.image,
-          rating: item.rating,
-          content: item.content,
-          status: "approved",
-          created_at: item.date,
-        }))
-        setTestimonials(formattedData)
-      } catch (error) {
-        console.error("Failed to load testimonials:", error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
-
-    loadTestimonials()
-  }, [])
-
-  if (isLoading) {
-    return (
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say about their
-              experience at Elite Cuts.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="animate-pulse">
-                <CardContent className="p-6 h-64"></CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
+  const testimonials = getFeaturedTestimonials()
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. Here&apos;s what our satisfied clients have to say about their
-            experience at Elite Cuts.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="overflow-hidden rounded-xl border bg-card text-card-foreground shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <Image
-                      src={testimonial.avatar_url || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{testimonial.name}</h3>
-                    <div className="flex">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-4 w-4 ${
-                            i < testimonial.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+    <section id="testimonials" className="bg-card py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <Reveal className="mb-14 grid gap-7 border-b border-border pb-10 md:grid-cols-2 md:items-end">
+          <div><p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-primary">Word on the street</p><h2 className="font-serif text-5xl leading-[0.92] tracking-[-0.04em] sm:text-7xl">They came for a cut. <span className="italic text-muted-foreground">They stayed for the standard.</span></h2></div>
+          <p className="max-w-sm text-sm leading-6 text-muted-foreground md:justify-self-end">Real words from clients who trust us with the details that shape how they show up.</p>
+        </Reveal>
+
+        {testimonials.length > 0 ? (
+          <div className="grid gap-px bg-border md:grid-cols-3">
+            {testimonials.slice(0, 3).map((testimonial, index) => (
+              <Reveal key={testimonial.id} delay={index * 0.08} className="flex h-full flex-col bg-background p-8 sm:p-10">
+                <Quote className="mb-10 size-8 text-primary" />
+                <blockquote className="flex-1 text-pretty font-serif text-2xl italic leading-snug">“{testimonial.content}”</blockquote>
+                <div className="mt-10 flex items-end justify-between border-t border-border pt-5">
+                  <div><p className="text-sm font-bold uppercase tracking-[0.12em]">{testimonial.name}</p><p className="mt-1 text-xs text-muted-foreground">Verified client</p></div>
+                  <div className="flex" aria-label={`${testimonial.rating} out of 5 stars`}>{Array.from({ length: 5 }).map((_, i) => <Star key={i} className={`size-3.5 ${i < testimonial.rating ? "fill-primary text-primary" : "text-border"}`} />)}</div>
                 </div>
-                <p className="text-gray-600">{testimonial.content}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </Reveal>
+            ))}
+          </div>
+        ) : <p className="border border-border p-10 text-center text-muted-foreground">Client stories are being curated.</p>}
       </div>
     </section>
   )
 }
-

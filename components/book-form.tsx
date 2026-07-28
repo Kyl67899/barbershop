@@ -89,15 +89,17 @@ export default function BookingForm() {
   }, [])
 
   return (
-    <section id="booking" className="py-20 bg-muted">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Book Your Appointment</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Schedule your visit with our expert barbers</p>
+    <section id="booking" className="bg-secondary py-24 text-secondary-foreground sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="mb-14 grid gap-8 border-b border-white/12 pb-10 md:grid-cols-2 md:items-end">
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-primary">Reserve your chair</p>
+            <h2 className="text-balance font-serif text-5xl leading-[0.92] tracking-[-0.04em] sm:text-7xl">Your best look starts <span className="italic text-primary">right here.</span></h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-secondary-foreground/58 md:justify-self-end">Choose your service and preferred time. We&apos;ll handle every detail from there.</p>
 
           {hasPrefilledData && formLoaded && (
-            <Alert className="mt-6 max-w-xl mx-auto bg-green-50 border-green-200">
+            <Alert className="mt-6 max-w-xl border-primary/40 bg-primary/10 text-secondary-foreground">
               <CheckCircle className="h-4 w-4 text-green-600" />
               <AlertTitle>Your information has been pre-filled</AlertTitle>
               <AlertDescription>
@@ -140,8 +142,8 @@ export default function BookingForm() {
           )}
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative w-full overflow-hidden rounded-lg shadow-md bg-white">
+        <div className="mx-auto max-w-4xl">
+          <div className="relative w-full overflow-hidden border border-white/12 bg-background shadow-2xl">
             <iframe
               ref={iframeRef}
               id="JotFormIFrame-250767357882168"
