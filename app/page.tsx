@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Hero />
       <Services />
       <About />
@@ -23,7 +23,7 @@ export default function Home() {
       <Testimonials />
       <Booking />
       <Contact />
-    </main>
+    </div>
   )
 }
 

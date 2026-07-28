@@ -1,62 +1,62 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-bodoni);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --radius-lg: var(--radius);
+}
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 24 9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 24 9% 10%;
-    --radius: 0.5rem;
+    --background: 40 23% 95%;
+    --foreground: 30 8% 7%;
+    --card: 40 20% 92%;
+    --card-foreground: 30 8% 7%;
+    --primary: 39 49% 56%;
+    --primary-foreground: 30 8% 7%;
+    --secondary: 30 8% 7%;
+    --secondary-foreground: 40 23% 95%;
+    --muted: 36 13% 84%;
+    --muted-foreground: 30 6% 39%;
+    --accent: 39 49% 56%;
+    --accent-foreground: 30 8% 7%;
+    --border: 35 12% 74%;
+    --input: 35 12% 74%;
+    --ring: 39 49% 56%;
+    --radius: 0.125rem;
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
-}
-/* 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
-
-html {
-  scroll-behavior: smooth;
+  * { border-color: hsl(var(--border)); }
+  html { scroll-behavior: smooth; background: hsl(var(--background)); }
+  body { margin: 0; background: hsl(var(--background)); color: hsl(var(--foreground)); font-family: var(--font-manrope), sans-serif; }
+  ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
+  a, button { outline-offset: 4px; }
+  :focus-visible { outline: 2px solid hsl(var(--ring)); }
 }
 
+@layer utilities {
+  .editorial-rule { background-image: linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px); background-size: 25% 100%; }
+  .text-stroke { color: transparent; -webkit-text-stroke: 1px currentColor; }
+  .grain { position: relative; }
+  .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .08; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

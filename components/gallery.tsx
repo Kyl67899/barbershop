@@ -1,42 +1,33 @@
 import Image from "next/image"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { Reveal } from "@/components/motion-reveal"
 
-const galleryImages = [
-  { src: "https://th.bing.com/th/id/OIP.C4AUyum7smjzaf1tjSEJwwHaE8?rs=1&pid=ImgDetMain", alt: "Haircut style 1" },
-  { src: "https://th.bing.com/th/id/R.c11c63a1a3a39130c794ad192b382b61?rik=cNJ%2bXnQlIhVhAg&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1598887142487-3c854d51eabb%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8MXx8YmFyYmVyJTIwc2hvcHx8MHx8fHwxNjE1NTc4Mzg0%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=Bu%2fM%2f6KBmJ7cZ8MeLjfDuABx31wVlDgwmFNxcPk5W08%3d&risl=&pid=ImgRaw&r=0", alt: "Beard trim" },
-  { src: "https://th.bing.com/th/id/OIP.I6buV9fcogmgKV8rEcmnHwHaE8?rs=1&pid=ImgDetMain", alt: "Haircut style 2" },
-  { src: "https://th.bing.com/th/id/R.63f936ebc5af3158d4225900fdcfdfef?rik=t3n2RwM%2flVXMAw&pid=ImgRaw&r=0", alt: "Barbershop interior" },
-  { src: "https://th.bing.com/th/id/R.2edf10cd345e0d5d0d1c9b1e082da237?rik=eXlDo9k7bybO8A&pid=ImgRaw&r=0", alt: "Hair styling" },
-  { src: "https://images.pexels.com/photos/2521978/pexels-photo-2521978.jpeg?cs=srgb&dl=pexels-thgusstavo-2521978.jpg&fm=jpg", alt: "Hot towel shave" },
+const images = [
+  { src: "/images/elite-shave.png", alt: "Traditional hot towel shave", label: "The ritual", className: "md:col-span-7 md:row-span-2" },
+  { src: "/images/elite-interior.png", alt: "Elite Cuts interior", label: "The space", className: "md:col-span-5" },
+  { src: "/images/elite-hero.png", alt: "Precision fade in progress", label: "The finish", className: "md:col-span-5" },
 ]
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-20 bg-muted">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Gallery</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Take a look at our work and the experience we provide
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
-            <div key={index} className="overflow-hidden rounded-lg group">
-              <div className="relative aspect-square">
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-            </div>
+    <section id="gallery" className="bg-background py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <Reveal className="mb-12 flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
+          <div><p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-primary">Inside Elite</p><h2 className="font-serif text-5xl leading-none tracking-[-0.04em] sm:text-7xl">Proof is in<br /><span className="italic text-muted-foreground">the details.</span></h2></div>
+          <Link href="/gallery" className="group inline-flex w-fit items-center gap-3 text-xs font-bold uppercase tracking-[0.2em]">View the full gallery <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
+        </Reveal>
+        <div className="grid auto-rows-[18rem] gap-4 md:grid-cols-12 md:auto-rows-[16rem]">
+          {images.map((image, index) => (
+            <Reveal key={image.label} delay={index * 0.1} className={`group relative overflow-hidden ${image.className}`}>
+              <Image src={image.src} alt={image.alt} fill sizes="(max-width: 768px) 100vw, 60vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-secondary/10 transition-colors group-hover:bg-secondary/35" />
+              <p className="absolute bottom-5 left-5 text-xs font-bold uppercase tracking-[0.22em] text-secondary-foreground">{image.label}</p>
+              <span className="absolute right-5 top-5 flex size-10 translate-y-2 items-center justify-center bg-primary text-primary-foreground opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"><ArrowUpRight className="size-4" /></span>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   )
 }
-

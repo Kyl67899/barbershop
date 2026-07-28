@@ -1,65 +1,40 @@
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { CheckCircle } from "lucide-react"
+import Link from "next/link"
+import { ArrowUpRight, Check } from "lucide-react"
+import { Reveal } from "@/components/motion-reveal"
+
+const standards = ["Master barbers", "Premium products", "Considered consultation", "Immaculate space"]
 
 export default function About() {
-
-  const services = 
-  [
-    "Premium Products", 
-    "Expert Barbers", 
-    "Clean Environment", 
-    "Modern Techniques"
-  ];
-
   return (
-    <section id="about" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="aspect-square overflow-hidden rounded-lg">
-              <Image
-                src="https://wallpapercave.com/wp/wp3067027.jpg"
-                alt="Barber at work"
-                width={800}
-                height={800}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="absolute -bottom-8 -right-8 bg-black text-white p-6 rounded-lg hidden md:block">
-              <p className="text-3xl font-bold">15+</p>
-              <p className="text-sm">Years of Experience</p>
-            </div>
+    <section id="about" className="overflow-hidden bg-secondary py-24 text-secondary-foreground sm:py-32">
+      <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:px-10">
+        <Reveal className="relative">
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <Image src="/images/elite-craft.png" alt="Master barber detailing a precision fade" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover" />
           </div>
-
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">About Elite Cuts</h2>
-            <div className="w-24 h-1 bg-primary mb-8"></div>
-            <p className="text-lg text-muted-foreground mb-6">
-              Founded in 2008, Elite Cuts has been providing premium grooming services to discerning clients. Our team
-              of expert barbers combines traditional techniques with modern styles to deliver exceptional results.
-            </p>
-            <p className="text-lg text-muted-foreground mb-8">
-              We believe that a great haircut is more than just a service—it&apos;s an experience. That&apos;s why
-              we&apos;ve created a space where you can relax, unwind, and leave looking and feeling your best.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {services.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <CheckCircle className="text-primary h-5 w-5" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <Button size="lg" className="text-lg bg-white text-black hover:bg-black hover:text-white">
-              Learn More
-            </Button>
+          <div className="absolute -bottom-8 right-0 bg-primary px-7 py-6 text-primary-foreground sm:right-8">
+            <p className="font-serif text-5xl leading-none">15+</p>
+            <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em]">Years refining the craft</p>
           </div>
+        </Reveal>
+
+        <div className="lg:pl-10">
+          <Reveal>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-primary">Our philosophy</p>
+            <h2 className="text-balance font-serif text-5xl leading-[0.95] tracking-[-0.04em] sm:text-7xl">A cut should say something <span className="italic text-primary">before you do.</span></h2>
+          </Reveal>
+          <Reveal delay={0.12} className="mt-9 border-l border-primary pl-6">
+            <p className="text-pretty text-base leading-7 text-secondary-foreground/68">Since 2008, Elite Cuts has paired old-school discipline with a distinctly modern point of view. We do not chase trends. We study proportion, texture, and character to create a look that belongs to you.</p>
+          </Reveal>
+          <Reveal delay={0.2} className="mt-10 grid gap-4 sm:grid-cols-2">
+            {standards.map((item) => <div key={item} className="flex items-center gap-3 border-b border-white/12 pb-4 text-sm"><Check className="size-4 text-primary" />{item}</div>)}
+          </Reveal>
+          <Reveal delay={0.28} className="mt-10">
+            <Link href="/about" className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-primary">Discover our story <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
+          </Reveal>
         </div>
       </div>
     </section>
   )
 }
-
