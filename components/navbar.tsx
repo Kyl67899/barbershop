@@ -57,7 +57,6 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6">
         <Link href="/" className="group flex items-baseline gap-2" aria-label="Elite Cuts home">
-          <span className="font-serif text-2xl italic leading-none text-primary">E</span>
           <span className="font-serif text-xl tracking-[0.2em] uppercase leading-none">
             Elite<span className="text-primary">Cuts</span>
           </span>
